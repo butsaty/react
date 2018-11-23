@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export const Component3 = () => {
-    return <div>
-        <h1>Component 3</h1>
-        <p>powered by a Stateless Functional Component</p>
-    </div>
+export class Component3 extends React.PureComponent {
+    render() {
+        return <div>
+            <h1>Pure component</h1>
+            <p>powered by React.PureComponent</p>
+        </div>
+    }
 }
