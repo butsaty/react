@@ -13,7 +13,7 @@ class App extends Component {
                 <h1>{title}</h1>
                 <hr /><br />
                 
-                {/* <Component1 /><hr /> */}
+                <Component1 /><hr />
                 <Component2 /><hr />
                 <Component3 /><hr />
                 <Component4 />
