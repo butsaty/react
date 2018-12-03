@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (2:11)\\nYou may need an appropriate loader to handle this file type.\\n| const Index = () => {\\r\\n>     return <div>Hello React!</div>;\\r\\n| };\\r\\n| \\r\");\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("throw new Error(\"Module parse failed: Unexpected token (5:16)\\nYou may need an appropriate loader to handle this file type.\\n| import App from './components/app';\\r\\n| \\r\\n> ReactDOM.render(<App />, document.getElementById('app'));\\r\\n| module.hot.accept();\");\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
