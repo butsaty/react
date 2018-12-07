@@ -1,64 +1,78 @@
-html, body {
-    margin: 0 50px;
-    overflow: auto;
-    background-color: #222;
+body {
+  margin: 0 100px;
+  overflow: auto;
+  background-color: #222;
+  background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1) ), url("https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX5981939.jpg");
 }
-#app{
-    display: flex;
-    flex-direction: column;
-    font-family: helvetica, arial, sans;
-    min-height: 100vh;
+
+#app {
+  display: flex;
+  flex-direction: column;
+  font-family: helvetica, arial, sans;
+  min-height: 100vh;
 }
 
 .header {
-    color: brown;
-    font-weight: bold;
-    font-size: 14pt;
-    flex: 1;
+  color: brown;
+  font-weight: bold;
+  font-size: 14pt;
+  flex: 1;
 }
 
 .footer {
-    color: brown;
-    text-align: center;
-    align-self: flex-end;
-    display: flex;
-    justify-content: center;
+  color: brown;
+  text-align: center;
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
 }
 
-.search-title{
-    color: gainsboro;
+.text-color {
+  color: gainsboro;
 }
 
-input{
-    outline: 0;
-    border-width: 0 0 2px;
-    border-color: brown;
-    background-color: transparent;
-    color: darkgray;
-    font-size: 14pt;
-    width: 100%;
-    padding: 15px;
-    background-color: black;
+input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: rgb(189, 81, 74);
+  background-color: transparent;
+  color: darkgray;
+  font-size: 14pt;
+  height: 40px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.801);
 }
 
-input:focus {
-    border-color: green
+.search-panel {
+  flex-grow: 1;
 }
 
-.search-panel{
-    flex-grow: 5;
-    /* background:#333; */
+.button-sm {
+  padding: 4px 20px 2px;
+  margin: 0 10px;
+  border: none;
+  background-color: dimgray;
+  color: gainsboro;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.button-sm{
-    padding: 3px 20px 1px;
+.button-search {
+  padding: 8px 60px 5px;
+  border: none;
+  background-color: rgb(189, 81, 74);
+  color: gainsboro;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.button-search{
-    padding: 6px 40px 2px;
+.selected-item--bg-color {
+  background-color: rgb(189, 81, 74);
 }
 
-.buttons-panel {
-    
+.horizontal-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
-

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Header } from './header';
 import { Footer } from './footer';
 import { Search } from './search';
+import { ErrorBoundary } from './errorBoundary';
 
 import './app.css';
 
@@ -11,7 +12,9 @@ class App extends Component {
         return (
             <React.Fragment>
                 <Header />
-                <Search />
+                <ErrorBoundary>
+                    <Search />
+                </ErrorBoundary>
                 <Footer />
             </React.Fragment>
         )
