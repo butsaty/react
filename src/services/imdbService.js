@@ -1,6 +1,7 @@
 export default class ImdbService {
-  static async getMovieList() {
-    const response = await fetch('http://react-cdp-api.herokuapp.com/movies')
+  static async getMovieList(searchBy, value) {
+    debugger;
+    const response = await fetch(`http://react-cdp-api.herokuapp.com/movies?search=${value}&searchBy=${searchBy}`);
     return await response.json();
   }
 

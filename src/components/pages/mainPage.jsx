@@ -8,23 +8,23 @@ export default class MainPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            movieList: null
+            movieList: null,
         }
 
         this.search = this.search.bind(this);
     }
 
-    async search() {
-        let movies = await ImdbService.getMovieList();
-        this.setState({
-            movieList: movies.data
-        });
+    async search(by, value) {
+        debugger;
+        console.log(by + value);
+        let movies = await ImdbService.getMovieList(by, value);
+        this.setState({ movieList: movies.data });
     }
 
     render() {
         return (
             <React.Fragment>
-                <Search search={this.search} />
+                <Search onSearch={this.search} />
                 <MovieList movies={this.state.movieList} />
             </React.Fragment>
         )
