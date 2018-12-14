@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 import { Header } from './header';
 import { Footer } from './footer';
-import { Search } from './search';
-import { ErrorBoundary } from './errorBoundary';
+import ErrorBoundary from './errorBoundary';
+import RoutePage from './pages/routePage';
 
 import './app.css';
 
@@ -12,27 +13,15 @@ class App extends Component {
         return (
             <React.Fragment>
                 <Header />
-                <ErrorBoundary>
-                    <Search />
-                </ErrorBoundary>
+                <BrowserRouter>
+                    <ErrorBoundary>
+                        <RoutePage />
+                    </ErrorBoundary>
+                </BrowserRouter>
                 <Footer />
             </React.Fragment>
         )
     }
-    // render() {
-    //     const title = 'React components:';
-    //     return (
-    //         <React.Fragment>
-    //             <h1>{title}</h1>
-    //             <hr /><br />
-
-    //             <Component1 /><hr />
-    //             <Component2 /><hr />
-    //             <Component3 /><hr />
-    //             <Component4 />
-    //         </React.Fragment>
-    //     );
-    // }
 }
 
 export default App;

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { HorizontalPanel } from './base/horizontalPanel';
 
 const SearchTypes = {
   title: 0,
   genre: 1
 };
 
-export class Search extends React.Component {
+export default class Search extends React.Component {
   constructor(props) {
     super(props);
 
@@ -30,9 +31,14 @@ export class Search extends React.Component {
     return (
       <div className="search-panel">
         <h3 className="text-color">FIND YOUR MOVIE</h3>
-        <input />
-        <div className="horizontal-panel">
-          <div className="horizontal-panel">
+        <input onKeyPress={event => {
+          if (event.key === "Enter") {
+            this.props.search();
+          }
+        }}
+        />
+        <HorizontalPanel>
+          <HorizontalPanel>
             <p className="text-color">SEARCH BY</p>
             <button className={"button-sm " + this.searchClass(SearchTypes.title)}
               onClick={() => this.onSearchByChanged(SearchTypes.title)}>
@@ -42,9 +48,12 @@ export class Search extends React.Component {
               onClick={() => this.onSearchByChanged(SearchTypes.genre)}>
               GENRE
             </button>
-          </div>
-          <button className="button-search">SEARCH</button>
-        </div>
+          </HorizontalPanel>
+          <button className="button-search"
+            onClick={() => this.props.search()}>
+            SEARCH
+          </button>
+        </HorizontalPanel>
       </div>
     );
   }

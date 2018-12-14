@@ -20,11 +20,13 @@ body {
 }
 
 .footer {
-  color: brown;
-  text-align: center;
-  align-self: flex-end;
   display: flex;
   justify-content: center;
+  text-align: center;
+  align-self: flex-start;
+  font-weight: bold;
+  font-size: 14pt;
+  color: brown;
 }
 
 .text-color {

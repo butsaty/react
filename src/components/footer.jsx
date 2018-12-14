@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
 
 export const Footer = () => {
-    return React.createElement('p', {className: "footer"}, 'by nikolai artemev');
+    return React.createElement('p', {className: "footer"}, 'netflixroulette');
 };
