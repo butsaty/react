@@ -11,15 +11,13 @@ import './app.css';
 class App extends Component {
     render() {
         return (
-            <React.Fragment>
-                <Header />
-                <BrowserRouter>
-                    <ErrorBoundary>
-                        <RoutePage />
-                    </ErrorBoundary>
-                </BrowserRouter>
-                <Footer />
-            </React.Fragment>
+            <BrowserRouter>
+                <ErrorBoundary>
+                    <Header />
+                    <RoutePage />
+                    <Footer />
+                </ErrorBoundary>
+            </BrowserRouter>
         )
     }
 }
