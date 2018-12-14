@@ -33,6 +33,11 @@ body {
   color: gainsboro;
 }
 
+.no-movies-text {
+  color: gainsboro;
+  text-align: center;
+}
+
 input {
   outline: 0;
   border-width: 0 0 2px;
