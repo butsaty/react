@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { HorizontalPanel } from './base/horizontalPanel';
 
 const SearchTypes = {
@@ -6,20 +6,31 @@ const SearchTypes = {
   genres: 'genres'
 };
 
+const OrderTypes = {
+  releaseDate: 'release date',
+  rating: 'rating'
+};
+
 export default class Search extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      orderBy: OrderTypes.rating,
       searchBy: SearchTypes.title,
       searchValue: ''
     };
   }
 
-  onSearchByChanged(searchBy) {
-    this.setState({
-      searchBy: searchBy
-    });
+  // componentDidMount(){
+  //  search();
+  // }
+
+  search() {
+    this.props.onSearch(
+      this.state.searchBy,
+      this.state.searchValue,
+      this.orderBy);
   }
 
   updateInputValue(e) {
@@ -28,13 +39,74 @@ export default class Search extends React.Component {
     });
   }
 
-  searchClass(searchBy) {
-    return searchBy === this.state.searchBy
+  onSearchBy(by) {
+    this.setState({
+      searchBy: by
+    });
+  }
+  searchClass(by) {
+    return by === this.state.searchBy
       ? "selected-item--bg-color"
       : "";
   }
 
+  onOrderBy(by) {
+    this.setState({
+      orderBy: by
+    });
+
+    this.search();
+  }
+  orderClass(by) {
+    return by === this.state.orderBy
+      ? "selected-item--bg-color"
+      : "";
+  }
+  get orderBy() {
+    return this.state.orderBy === OrderTypes.releaseDate
+      ? 'release_date'
+      : 'vote_average';
+  }
+
   render() {
+    const searchBy = (
+      <HorizontalPanel>
+        <p className="text-color">SEARCH BY</p>
+        <button className={"button-sm " + this.searchClass(SearchTypes.title)}
+          onClick={() => this.onSearchBy(SearchTypes.title)}>
+          TITLE
+            </button>
+        <button className={"button-sm " + this.searchClass(SearchTypes.genres)}
+          onClick={() => this.onSearchBy(SearchTypes.genres)}>
+          GENRE
+        </button>
+      </HorizontalPanel>
+    )
+
+    const orderBy = (
+      <React.Fragment>
+        <p>{this.props.foundCount} movies found</p>
+        <HorizontalPanel>
+          <p className="text-color">Sort by</p>
+          <button className={"button-sm " + this.orderClass(OrderTypes.releaseDate)}
+            onClick={() => this.onOrderBy(OrderTypes.releaseDate)}>
+            release date
+        </button>
+          <button className={"button-sm " + this.orderClass(OrderTypes.rating)}
+            onClick={() => this.onOrderBy(OrderTypes.rating)}>
+            rating
+        </button>
+        </HorizontalPanel>
+      </React.Fragment>
+    )
+
+    const searchBtn = (
+      <button className="search-btn"
+        onClick={() => this.search()}>
+        SEARCH
+      </button>
+    )
+
     return (
       <div className="search-panel">
         <h3 className="text-color">FIND YOUR MOVIE</h3>
@@ -47,23 +119,16 @@ export default class Search extends React.Component {
             }
           }}
         />
-        <HorizontalPanel>
+        <div className="search-buttons">
           <HorizontalPanel>
-            <p className="text-color">SEARCH BY</p>
-            <button className={"button-sm " + this.searchClass(SearchTypes.title)}
-              onClick={() => this.onSearchByChanged(SearchTypes.title)}>
-              TITLE
-            </button>
-            <button className={"button-sm " + this.searchClass(SearchTypes.genres)}
-              onClick={() => this.onSearchByChanged(SearchTypes.genres)}>
-              GENRE
-            </button>
+            {searchBy}
+            {searchBtn}
           </HorizontalPanel>
-          <button className="button-search"
-            onClick={() => this.props.onSearch(this.state.searchBy, this.state.searchValue)}>
-            SEARCH
-          </button>
-        </HorizontalPanel>
+          <hr />
+          <HorizontalPanel>
+            {orderBy}
+          </HorizontalPanel>
+        </div>
       </div>
     );
   }

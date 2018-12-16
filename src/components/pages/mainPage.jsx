@@ -9,20 +9,25 @@ export default class MainPage extends Component {
         super(props);
         this.state = {
             movieList: [],
+            movieTotalCount: 0
         }
 
         this.search = this.search.bind(this);
     }
 
-    async search(by, value) {
-        let movies = await ImdbService.getMovieList(by, value);
-        this.setState({ movieList: movies.data });
+    async search(by, value, order) {
+        let movies = await ImdbService.getMovieList(by, value, order);
+        debugger;
+        this.setState({ 
+            movieList: movies.data,
+            movieTotalCount: movies.total
+         });
     }
 
     render() {
         return (
             <React.Fragment>
-                <Search onSearch={this.search} />
+                <Search onSearch={this.search} foundCount={this.state.movieTotalCount} />
                 <MovieList movies={this.state.movieList} />
             </React.Fragment>
         )

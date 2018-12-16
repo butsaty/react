@@ -12,14 +12,19 @@ body {
   min-height: 100vh;
 }
 
-.header {
+
+.main-page-link {
+  text-decoration: none;  
   color: brown;
   font-weight: bold;
   font-size: 14pt;
+}
+
+header {
   flex: 1;
 }
 
-.footer {
+footer {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -52,6 +57,7 @@ input {
 
 .search-panel {
   flex-grow: 1;
+  min-width: 500px;
 }
 
 .button-sm {
@@ -64,13 +70,19 @@ input {
   cursor: pointer;
 }
 
-.button-search {
+.search-btn {
   padding: 8px 60px 5px;
   border: none;
   background-color: rgb(189, 81, 74);
   color: gainsboro;
   font-weight: bold;
   cursor: pointer;
+}
+
+.search-buttons {
+  color: coral;
+  background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2) );
+  width: 100%;  
 }
 
 .selected-item--bg-color {
@@ -82,4 +94,13 @@ input {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid darkslategray;
+  margin: 0;
+  padding: 0; 
 }

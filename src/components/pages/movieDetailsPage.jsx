@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './movieDetailsPage.css';
 import ImdbService from '../../services/imdbService';
 
-export default class MovieDetailsPage extends Component {
+export default class MovieDetailsPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -12,16 +12,22 @@ export default class MovieDetailsPage extends Component {
     }
 
     async componentDidMount() {
-        debugger;
         const details = await ImdbService.getMovieDetails(this.props.match.params.id);
         this.setState({ info: details });
     }
 
     render() {
-        debugger;
-        const {title, vote_average, release_date, genres, poster_path, overview} = this.state.info;
+        const {
+            title,
+            vote_average,
+            release_date,
+            genres,
+            poster_path,
+            overview
+        } = this.state.info;
+
         return (
-            <div>
+            <div className="details-page">
                 <img src={poster_path} alt="POSTER" className="movie-poster" />
                 <div className="movie-info">
                     <div>
@@ -33,7 +39,7 @@ export default class MovieDetailsPage extends Component {
                         </div>
                     </div>
                     <hr />
-                    <b>Storyline</b>
+                    <b>Overview</b>
                     <p>{overview}</p>
                 </div>
             </div>
