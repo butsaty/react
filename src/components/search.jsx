@@ -53,9 +53,9 @@ export default class Search extends React.Component {
   onOrderBy(by) {
     this.setState({
       orderBy: by
-    });
-
-    this.search();
+    },
+      this.search()
+    );
   }
   orderClass(by) {
     return by === this.state.orderBy
