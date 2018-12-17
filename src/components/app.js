@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-import { Component1 } from "../components/component1";
-import { Component2 } from "../components/component2";
-import { Component3 } from "../components/component3";
-import { Component4 } from "../components/component4";
+import { Header } from './header';
+import { Footer } from './footer';
+import ErrorBoundary from './errorBoundary';
+import RoutePage from './pages/routePage';
+
+import './app.css';
 
 class App extends Component {
     render() {
-        const title = 'React components:';
         return (
-            <React.Fragment>
-                <h1>{title}</h1>
-                <hr /><br />
-                
-                <Component1 /><hr />
-                <Component2 /><hr />
-                <Component3 /><hr />
-                <Component4 />
-            </React.Fragment>
-        );
+            <BrowserRouter>
+                <ErrorBoundary>
+                    <Header />
+                    <RoutePage />
+                    <Footer />
+                </ErrorBoundary>
+            </BrowserRouter>
+        )
     }
 }
 
