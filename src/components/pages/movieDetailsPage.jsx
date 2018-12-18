@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './movieDetailsPage.css';
 import ImdbService from '../../services/imdbService';
@@ -42,6 +43,9 @@ export default class MovieDetailsPage extends React.Component {
                     <b>Overview</b>
                     <p>{overview}</p>
                 </div>
+                <Link to={`/`} className="link">
+                    <p>Go back</p>
+                </Link>
             </div>
         );
     }

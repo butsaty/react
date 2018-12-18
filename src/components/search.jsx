@@ -75,7 +75,7 @@ export default class Search extends React.Component {
         <button className={"button-sm " + this.searchClass(SearchTypes.title)}
           onClick={() => this.onSearchBy(SearchTypes.title)}>
           TITLE
-            </button>
+        </button>
         <button className={"button-sm " + this.searchClass(SearchTypes.genres)}
           onClick={() => this.onSearchBy(SearchTypes.genres)}>
           GENRE
