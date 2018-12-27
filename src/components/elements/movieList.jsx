@@ -13,7 +13,6 @@ export default class MovieList extends React.PureComponent {
                 <div className="grid" key={info.id}>
                     <div className="box">
                         <Link to={`/movies/${info.id}`}
-                            // activeClassName="current" 
                             className="poster-title-link">
                             <h3 className='poster-title'>{info.title}</h3>
                             <img src={info.poster_path} alt="POSTER" className="poster" />

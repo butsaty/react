@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { Header } from './header';
-import { Footer } from './footer';
-import ErrorBoundary from './errorBoundary';
+import { Header } from './elements/header';
+import { Footer } from './elements/footer';
+import ErrorBoundary from './base/errorBoundary';
 import RoutePage from './pages/routePage';
 
 import './app.css';
 
-class App extends Component {
+class App extends React.Component {
     render() {
         return (
             <BrowserRouter>

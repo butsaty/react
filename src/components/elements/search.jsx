@@ -1,5 +1,5 @@
 import React from "react";
-import { HorizontalPanel } from './base/horizontalPanel';
+import { HorizontalPanel } from '../base/horizontalPanel';
 
 const SearchTypes = {
   title: 'title',
