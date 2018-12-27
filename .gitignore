@@ -1,5 +1,6 @@
 node_modules
 __snapshots__
+test-coverage
 dist/bundle.js
 dist/bundle.js
 
