@@ -46,12 +46,13 @@
     "start": "node_modules/.bin/cross-env NODE_ENV=development node_modules/.bin/webpack-dev-server --config ./webpack",
     "build": "node_modules/.bin/cross-env NODE_ENV=production node_modules/.bin/webpack --config ./webpack",
     "test": "node_modules/.bin/jest",
-    "coverage": "node_modules/.bin/jest --coverage --coverageDirectory=dist/test-coverage"
+    "coverage": "node_modules/.bin/jest  --updateSnapshot --coverage --coverageDirectory=dist/test-coverage"
   },
   "jest": {
     "roots": [
       "./src/components/"
     ],
+    "automock": false,
     "coverageReporters": [
       "text",
       "html"
