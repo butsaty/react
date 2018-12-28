@@ -72,11 +72,15 @@ export default class Search extends React.Component {
     const searchBy = (
       <HorizontalPanel>
         <p className="text-color">SEARCH BY</p>
-        <button className={"button-sm " + this.searchClass(SearchTypes.title)}
+        <button
+          id="titleBtn"
+          className={"button-sm " + this.searchClass(SearchTypes.title)}
           onClick={() => this.onSearchBy(SearchTypes.title)}>
           TITLE
         </button>
-        <button className={"button-sm " + this.searchClass(SearchTypes.genres)}
+        <button
+          id="genreBtn"
+          className={"button-sm " + this.searchClass(SearchTypes.genres)}
           onClick={() => this.onSearchBy(SearchTypes.genres)}>
           GENRE
         </button>
@@ -88,11 +92,13 @@ export default class Search extends React.Component {
         <p>{this.props.foundCount} movies found</p>
         <HorizontalPanel>
           <p className="text-color">Sort by</p>
-          <button className={"button-sm " + this.orderClass(OrderTypes.releaseDate)}
+          <button
+            className={"button-sm " + this.orderClass(OrderTypes.releaseDate)}
             onClick={() => this.onOrderBy(OrderTypes.releaseDate)}>
             release date
         </button>
-          <button className={"button-sm " + this.orderClass(OrderTypes.rating)}
+        <button
+            className={"button-sm " + this.orderClass(OrderTypes.rating)}
             onClick={() => this.onOrderBy(OrderTypes.rating)}>
             rating
         </button>
@@ -101,7 +107,9 @@ export default class Search extends React.Component {
     )
 
     const searchBtn = (
-      <button className="search-btn"
+      <button
+        id="searchBtn"
+        className="search-btn"
         onClick={() => this.search()}>
         SEARCH
       </button>
@@ -111,6 +119,7 @@ export default class Search extends React.Component {
       <div className="search-panel">
         <h3 className="text-color">FIND YOUR MOVIE</h3>
         <input
+          id="searchInput"
           value={this.state.inputValue}
           onChange={e => this.updateInputValue(e)}
           onKeyPress={event => {

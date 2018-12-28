@@ -23,7 +23,7 @@ export default class MovieList extends React.PureComponent {
         );
 
         if (this.props.movies != null && this.props.movies.length > 0)
-            return <div>{movies}</div>;
+            return <div id="movieList">{movies}</div>;
 
         return <h3 className="no-movies-text">
             No movies to show. Try to search something

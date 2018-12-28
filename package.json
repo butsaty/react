@@ -34,6 +34,7 @@
     "http-server": "^0.11.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
+    "protractor": "^5.4.2",
     "react-hot-loader": "^4.3.12",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
@@ -46,7 +47,8 @@
     "start": "node_modules/.bin/cross-env NODE_ENV=development node_modules/.bin/webpack-dev-server --config ./webpack",
     "build": "node_modules/.bin/cross-env NODE_ENV=production node_modules/.bin/webpack --config ./webpack",
     "test": "node_modules/.bin/jest",
-    "coverage": "node_modules/.bin/jest  --updateSnapshot --coverage --coverageDirectory=dist/test-coverage"
+    "coverage": "node_modules/.bin/jest  --updateSnapshot --coverage --coverageDirectory=dist/test-coverage",
+    "e2e": "node_modules/.bin/protractor e2e/protractor.conf.js"
   },
   "jest": {
     "roots": [
@@ -60,8 +62,12 @@
     "testPathIgnorePatterns": [
       "/node_modules/"
     ],
-    "setupFiles": ["./src/setupTests.js"],
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "setupFiles": [
+      "./src/setupTests.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "verbose": true,
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
