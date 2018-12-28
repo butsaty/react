@@ -13,7 +13,6 @@ export default class MovieList extends React.PureComponent {
                 <div className="grid" key={info.id}>
                     <div className="box">
                         <Link to={`/movies/${info.id}`}
-                            // activeClassName="current" 
                             className="poster-title-link">
                             <h3 className='poster-title'>{info.title}</h3>
                             <img src={info.poster_path} alt="POSTER" className="poster" />
@@ -24,7 +23,7 @@ export default class MovieList extends React.PureComponent {
         );
 
         if (this.props.movies != null && this.props.movies.length > 0)
-            return <div>{movies}</div>;
+            return <div id="movieList">{movies}</div>;
 
         return <h3 className="no-movies-text">
             No movies to show. Try to search something

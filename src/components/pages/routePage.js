@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import MainPage from './mainPage';
 import MovieDetailsPage from './movieDetailsPage';
 
-class RoutePage extends Component {
+class RoutePage extends React.Component {
     constructor(props) {
         super(props)
     }

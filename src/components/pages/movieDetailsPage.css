@@ -18,3 +18,10 @@
 .base-info {
     text-align: left;
 }
+
+.link {
+    color: brown;
+    font-weight: bold;
+    font-size: 14pt;
+    text-align: end;
+  }

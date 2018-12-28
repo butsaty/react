@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Search from '../search';
-import MovieList from '../movieList';
-import ImdbService from '../../services/imdbService';
+import Search from '../elements/search';
+import MovieList from '../elements/movieList';
+import ImdbService from '../imdbService';
 
 export default class MainPage extends Component {
     constructor(props) {
