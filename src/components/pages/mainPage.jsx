@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from "net";
+import { connect } from "react-redux";
 
 import Search from '../elements/search';
 import MovieList from '../elements/movieList';
