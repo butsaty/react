@@ -1,6 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app';
+import configureStore from './store/configureStore';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const store = configureStore();
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('app')
+);
+
 module.hot.accept();

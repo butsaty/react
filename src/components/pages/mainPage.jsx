@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from "net";
 
 import Search from '../elements/search';
 import MovieList from '../elements/movieList';
-import ImdbService from '../imdbService';
+import { fetchMoviesBegin } from "../../actions/movieActions";
 
-export default class MainPage extends Component {
+class MainPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,20 +17,27 @@ export default class MainPage extends Component {
     }
 
     async search(by, value, order) {
-        let movies = await ImdbService.getMovieList(by, value, order);
-        debugger;
-        this.setState({ 
-            movieList: movies.data,
-            movieTotalCount: movies.total
-         });
+        this.props.dispatch(fetchMoviesBegin(by, value, order));
+        this.setState({
+            movieList: this.props.movies.data,
+            movieTotalCount: this.props.movies.total
+        });
     }
 
     render() {
         return (
             <React.Fragment>
                 <Search onSearch={this.search} foundCount={this.state.movieTotalCount} />
-                <MovieList movies={this.state.movieList} />
+                <MovieList movies={this.props.movies} />
             </React.Fragment>
         )
     }
 }
+
+const mapStateToProps = state => ({
+    products: state.movies.items,
+    loading: state.movies.loading,
+    error: state.movies.error
+});
+
+export default connect(mapStateToProps)(MainPage);
