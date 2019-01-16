@@ -25,9 +25,9 @@ export const fetchMoviesBegin = () => ({
     type: actionType.FETCH_MOVIES_BEGIN
 });
 
-export const fetchMoviesSuccess = movies => ({
+export const fetchMoviesSuccess = items => ({
     type: actionType.FETCH_MOVIES_SUCCESS,
-    payload: { movies }
+    payload: { items }
 });
 
 export const fetchMoviesFailure = error => ({

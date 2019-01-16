@@ -3,41 +3,42 @@ import { connect } from "react-redux";
 
 import Search from '../elements/search';
 import MovieList from '../elements/movieList';
-import { fetchMoviesBegin } from "../../actions/movieActions";
+import { fetchMovies } from "../../actions/movieActions";
 
 class MainPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            movieList: [],
-            movieTotalCount: 0
-        }
-
         this.search = this.search.bind(this);
     }
 
+    get movieTotalCount() {
+        return this.props.movieCollection != null
+            ? this.props.movieCollection.total
+            : 0;
+    }
+
+    get movieList() {
+        return this.props.movieCollection.data || [];
+    }
+
     async search(by, value, order) {
-        this.props.dispatch(fetchMoviesBegin(by, value, order));
-        this.setState({
-            movieList: this.props.movies.data,
-            movieTotalCount: this.props.movies.total
-        });
+        this.props.dispatch(fetchMovies(by, value, order));
     }
 
     render() {
         return (
             <React.Fragment>
-                <Search onSearch={this.search} foundCount={this.state.movieTotalCount} />
-                <MovieList movies={this.props.movies} />
+                <Search onSearch={this.search} foundCount={this.movieTotalCount} />
+                <MovieList movies={this.movieList} />
             </React.Fragment>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    products: state.movies.items,
-    loading: state.movies.loading,
-    error: state.movies.error
+    movieCollection: state.movies.items,
+    loading: state.loading,
+    error: state.error
 });
 
 export default connect(mapStateToProps)(MainPage);

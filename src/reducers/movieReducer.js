@@ -19,7 +19,7 @@ export default function movieReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        items: action.payload.products
+        items: action.payload.items
       };
 
     case actionTypes.FETCH_MOVIES_FAILURE:
@@ -34,15 +34,3 @@ export default function movieReducer(state = initialState, action) {
       return state;
   }
 }
-// export default function MovieReducer(state = [], action) {
-//   switch (action.type) {
-//     case MOVIES_LOADED:
-//       console.log('MOVIES_LOADED Action')
-//       return action.movies;
-//     case DETAILS_LOADED:
-//       console.log('DETAILS_LOADED Action')
-//       return action.details;
-//     default:
-//       return state;
-//   }
-// }
