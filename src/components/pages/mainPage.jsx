@@ -6,34 +6,38 @@ import MovieList from '../elements/movieList';
 import { fetchMovies } from "../../actions/movieActions";
 
 class MainPage extends Component {
-    constructor(props) {
-        super(props);
-        this.search = this.search.bind(this);
-    }
-
-    get movieTotalCount() {
-        return this.props.movieCollection != null
-            ? this.props.movieCollection.total
-            : 0;
-    }
-
-    get movieList() {
-        return this.props.movieCollection.data || [];
-    }
-
-    async search(by, value, order) {
-        this.props.dispatch(fetchMovies(by, value, order));
-    }
-
     render() {
+        const {
+            loading,
+            error,
+            movieCollection,
+            search
+        } = this.props;
+
+        if (loading) {
+            return <div>Loading...</div>;
+        }
+        if (error) {
+            return <div>Error! {error.message}</div>;
+        }
+
+        const movies = movieCollection.data || [];
+        const count = movieCollection != null
+            ? movieCollection.total
+            : 0;
+
         return (
             <React.Fragment>
-                <Search onSearch={this.search} foundCount={this.movieTotalCount} />
-                <MovieList movies={this.movieList} />
+                <Search onSearch={search} foundCount={count} />
+                <MovieList movies={movies} />
             </React.Fragment>
         )
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    search: (by, value, order) => dispatch(fetchMovies(by, value, order))
+});
 
 const mapStateToProps = state => ({
     movieCollection: state.movies.items,
@@ -41,4 +45,4 @@ const mapStateToProps = state => ({
     error: state.error
 });
 
-export default connect(mapStateToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
