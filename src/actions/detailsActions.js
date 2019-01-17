@@ -1,13 +1,13 @@
 import {
-    FETCH_MOVIES_BEGIN,
-    FETCH_MOVIES_FAILURE,
-    FETCH_MOVIES_SUCCESS
+    FETCH_DETAILS_FAILURE,
+    FETCH_DETAILS_SUCCESS,
+    FETCH_DETAILS_BEGIN
 } from "./actionTypes";
 
-export function fetchMovies(searchBy, value, order) {
+export function fetchDetails(id) {
     return dispatch => {
         dispatch(fetchBegin());
-        return fetch(`http://react-cdp-api.herokuapp.com/movies?search=${value}&searchBy=${searchBy}&sortBy=${order}&sortOrder=asc`)
+        return fetch('http://react-cdp-api.herokuapp.com/movies/' + id)
             .then(handleErrors)
             .then(res => res.json())
             .then(json => {
@@ -18,7 +18,6 @@ export function fetchMovies(searchBy, value, order) {
     };
 }
 
-
 function handleErrors(response) {
     if (!response.ok) {
         throw Error(response.statusText);
@@ -27,15 +26,15 @@ function handleErrors(response) {
 }
 
 const fetchBegin = () => ({
-    type: FETCH_MOVIES_BEGIN
+    type: FETCH_DETAILS_BEGIN
 });
 
-const fetchSuccess = items => ({
-    type: FETCH_MOVIES_SUCCESS,
-    payload: { items }
+const fetchSuccess = details => ({
+    type: FETCH_DETAILS_SUCCESS,
+    payload: { details }
 });
 
 const fetchFailure = error => ({
-    type: FETCH_MOVIES_FAILURE,
+    type: FETCH_DETAILS_FAILURE,
     payload: { error }
 });

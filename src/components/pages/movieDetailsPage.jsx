@@ -1,52 +1,56 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 
 import './movieDetailsPage.css';
-import ImdbService from '../imdbService';
+import { fetchDetails } from "../../actions/detailsActions";
 
-export default class MovieDetailsPage extends React.Component {
+class MovieDetailsPage extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            info: []
-        };
     }
 
-    async componentDidMount() {
-        const details = await ImdbService.getMovieDetails(this.props.match.params.id);
-        this.setState({ info: details });
+    componentDidMount() {
+        this.props.dispatch(fetchDetails(this.props.match.params.id));
     }
 
     render() {
-        const {
-            title,
-            vote_average,
-            release_date,
-            genres,
-            poster_path,
-            overview
-        } = this.state.info;
+        const { loading, error, details } = this.props;
 
         return (
-            <div className="details-page">
-                <img src={poster_path} alt="POSTER" className="movie-poster" />
-                <div className="movie-info">
-                    <div>
-                        <div className="base-info">
-                            <p><b>Title: </b>{title}</p>
-                            <p><b>IMDB: </b>{vote_average}</p>
-                            <p><b>Release date: </b>{release_date}</p>
-                            <p><b>Genres: </b>{JSON.stringify(genres)}</p>
+            <React.Fragment>
+                {loading && <h3 className="no-movies-text">Loading...</h3>}
+                {error && <h3 className="no-movies-text">Error! {error.message}</h3>}
+                {!loading && !error &&
+                    <div className="details-page">
+                        <img src={details.poster_path} alt="POSTER" className="movie-poster" />
+                        <div className="movie-info">
+                            <div>
+                                <div className="base-info">
+                                    <p><b>Title: </b>{details.title}</p>
+                                    <p><b>IMDB: </b>{details.vote_average}</p>
+                                    <p><b>Release date: </b>{details.release_date}</p>
+                                    <p><b>Genres: </b>{JSON.stringify(details.genres)}</p>
+                                </div>
+                            </div>
+                            <hr />
+                            <b>Overview</b>
+                            <p>{details.overview}</p>
                         </div>
+                        <Link to={`/`} className="link">
+                            <p>Go back</p>
+                        </Link>
                     </div>
-                    <hr />
-                    <b>Overview</b>
-                    <p>{overview}</p>
-                </div>
-                <Link to={`/`} className="link">
-                    <p>Go back</p>
-                </Link>
-            </div>
+                }
+            </React.Fragment>
         );
     }
 }
+
+const mapStateToProps = state => ({
+    details: state.details.details,
+    loading: state.details.loading,
+    error: state.details.error
+});
+
+export default connect(mapStateToProps)(MovieDetailsPage);

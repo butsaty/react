@@ -14,13 +14,6 @@ class MainPage extends Component {
             search
         } = this.props;
 
-        if (loading) {
-            return <div>Loading...</div>;
-        }
-        if (error) {
-            return <div>Error! {error.message}</div>;
-        }
-
         const movies = movieCollection.data || [];
         const count = movieCollection != null
             ? movieCollection.total
@@ -29,7 +22,9 @@ class MainPage extends Component {
         return (
             <React.Fragment>
                 <Search onSearch={search} foundCount={count} />
-                <MovieList movies={movies} />
+                {loading && <h3 className="no-movies-text">Loading...</h3>}
+                {error && <h3 className="no-movies-text">Error! {error.message}</h3>}
+                {!loading && !error && <MovieList movies={movies} />}
             </React.Fragment>
         )
     }
@@ -41,8 +36,8 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
     movieCollection: state.movies.items,
-    loading: state.loading,
-    error: state.error
+    loading: state.movies.loading,
+    error: state.movies.error
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
