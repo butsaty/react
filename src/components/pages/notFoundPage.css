@@ -1,0 +1,16 @@
+.not-fund-page{
+    flex: 1;
+}
+
+h1, h3 {
+    width: auto;
+    color: gainsboro;
+    text-align: center;
+}
+
+.link {
+    color: brown;
+    font-weight: bold;
+    font-size: 14pt;
+    text-align: center;
+  }
