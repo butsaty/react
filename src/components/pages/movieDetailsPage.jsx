@@ -16,7 +16,6 @@ class MovieDetailsPage extends React.Component {
 
     render() {
         const { loading, error, details } = this.props;
-        
         return (
             <React.Fragment>
                 {loading && <h3 className="no-movies-text">Loading...</h3>}
