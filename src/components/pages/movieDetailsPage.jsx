@@ -16,7 +16,6 @@ class MovieDetailsPage extends React.Component {
 
     render() {
         const { loading, error, details } = this.props;
-
         return (
             <React.Fragment>
                 {loading && <h3 className="no-movies-text">Loading...</h3>}
@@ -37,7 +36,7 @@ class MovieDetailsPage extends React.Component {
                             <b>Overview</b>
                             <p>{details.overview}</p>
                         </div>
-                        <Link to={`/`} className="link">
+                        <Link to={`/movies`} className="link">
                             <p>Go back</p>
                         </Link>
                     </div>
