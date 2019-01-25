@@ -20,7 +20,17 @@ class MovieDetailsPage extends React.Component {
             <React.Fragment>
                 {loading && <h3 className="no-movies-text">Loading...</h3>}
                 {error && <h3 className="no-movies-text">Error! {error.message}</h3>}
-                {!loading && !error &&
+                {!loading && !error && !details.title &&
+                    <div>
+                        <h3 className="no-movies-text">
+                            Bad link. Check if movie id is right.
+                        </h3>
+                        <Link to={`/movies`} className="link">
+                            <p>Go back</p>
+                        </Link>
+                    </div>
+                }
+                {!loading && !error && details.title &&
                     <div className="details-page">
                         <img src={details.poster_path} alt="POSTER" className="movie-poster" />
                         <div className="movie-info">
