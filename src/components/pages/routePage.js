@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import {
     BrowserRouter as Router,
     Route,
@@ -6,28 +6,26 @@ import {
     Switch
 } from 'react-router-dom';
 
-import MainPage from './mainPage';
-import MovieDetailsPage from './movieDetailsPage';
-import NotFoundPage from './notFoundPage';
-
 class RoutePage extends React.Component {
     constructor(props) {
         super(props)
     }
 
     render() {
-        const mainPage = () => (
-            <MainPage />
-        );
+        const MainPage = lazy(() => import('./mainPage'));
+        const MovieDetailsPage = lazy(() => import('./movieDetailsPage'));
+        const NotFoundPage = lazy(() => import('./notFoundPage'));
 
         return (
             <Router history={browserHistory}>
-                <Switch>
-                    <Route exact path="/" render={mainPage} />
-                    <Route path="/movies/:id" component={MovieDetailsPage} />
-                    <Route path="/movies" render={mainPage} />
-                    <Route component={NotFoundPage} />
-                </Switch>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Switch>
+                        <Route exact path="/" component={(props) => <MainPage {...props}/>} />
+                        <Route path="/movies/:id" component={(props) => <MovieDetailsPage {...props}/>} />
+                        <Route path="/movies" component={(props) => <MainPage {...props}/>} />
+                        <Route component={(props) => <NotFoundPage {...props}/>} />
+                    </Switch>
+                </Suspense>
             </Router>
         )
     }
