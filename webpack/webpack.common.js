@@ -1,9 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
 const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 
 module.exports = {
-    entry: './src/index.js',
+    mode: "development",
     module: {
         rules: [
             {
@@ -11,17 +12,10 @@ module.exports = {
                 exclude: /node_modules/,
                 use: ['babel-loader']
             },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
-            },
         ]
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx', '.css'],
-        modules: [
-          'node_modules'
-        ]        
+        extensions: ['*', '.js', '.jsx'],
     },
     output: {
         path: path.resolve(__dirname, "../dist"),
@@ -35,7 +29,8 @@ module.exports = {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
             },
         }),
-        new AsyncChunkNames()
+        new AsyncChunkNames(),
+        new FriendlyErrorsWebpackPlugin()
     ],
     // optimization: {
     //     splitChunks: {

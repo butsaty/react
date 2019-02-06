@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import thunkMiddleware from 'redux-thunk';
 import rootReducer from '../reducers/rootReducer';
 
 // export default function configureStore() {
@@ -11,7 +11,19 @@ import rootReducer from '../reducers/rootReducer';
 //   );
 // }
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-let middleware = applyMiddleware(thunk);
-let store = middleware(createStore)(rootReducer);
 
-export default store; 
+///---
+//let middleware = applyMiddleware(thunk);
+//let store = middleware(createStore)(rootReducer);
+
+//export default store; 
+///---
+
+export const initializeSession = ( ) => ( {
+    type: "INITIALIZE_SESSION",
+} );
+
+export default (initialState) =>{
+    console.log(`create store = ${initialState}`);
+    return createStore(rootReducer, initialState, applyMiddleware(thunkMiddleware));
+}
