@@ -24,6 +24,5 @@ export const initializeSession = ( ) => ( {
 } );
 
 export default (initialState) =>{
-    console.log(`create store = ${initialState}`);
     return createStore(rootReducer, initialState, applyMiddleware(thunkMiddleware));
 }

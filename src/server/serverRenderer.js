@@ -14,13 +14,10 @@ function renderHTML(html, preloadedState) {
           ${process.env.NODE_ENV === 'development' ? '' : '<link href="./main.css" rel="stylesheet" type="text/css">'}
         </head>
         <body>
-          <h1>### Server Rendering ###</h1>
           <div id="app">${html}</div>
           <script>
             // WARNING: See the following for security issues around embedding JSON in HTML:
             // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
-            
-            console.log("window is " + window);
             window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
           </script>
           <script src="./bundle.js"></script>
