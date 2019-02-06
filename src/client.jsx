@@ -10,7 +10,7 @@ const store = createStore(window.PRELOADED_STATE);
 
 hydrate(
     <Provider store={store} Router={BrowserRouter}>
-        <App />
+        <App Router={BrowserRouter}/>
     </Provider>,
     document.getElementById('app')
 );

@@ -1,8 +1,9 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom';
+import { StaticRouter} from 'react-router-dom';
 import App from '../components/app';
 import createStore from '../store';
+import {Provider} from "react-redux";
 
 function renderHTML(html, preloadedState) {
   return `
@@ -30,18 +31,14 @@ function renderHTML(html, preloadedState) {
 
 export default function serverRenderer() {
   return (req, res) => {
-    console.log(`window is ${window}`);
     const store = createStore();
     // This context object contains the results of the render
     const context = {};
 
     const app = (
-      <App
-        context={context}
-        location={req.url}
-        Router={StaticRouter}
-        store={store}
-      />
+        <Provider store={store}>
+          <App Router={StaticRouter} location={req.url} context={context}/>
+        </Provider>
     );
 
     const htmlString = renderToString(app);

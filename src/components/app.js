@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 
 import { Header } from './elements/header';
 import { Footer } from './elements/footer';
@@ -7,17 +6,17 @@ import ErrorBoundary from './base/errorBoundary';
 import RoutePage from './pages/routePage';
 
 import './app.css';
-
 class App extends React.Component {
     render() {
+        const {Router, location, context } = this.props;
         return (
-            <BrowserRouter>
+            <Router location={location} context={context}>
                 <ErrorBoundary>
                     <Header />
-                    <RoutePage />
+                    <RoutePage Router={Router} location={location} context={context}/>
                     <Footer />
                 </ErrorBoundary>
-            </BrowserRouter>
+            </Router>
         )
     }
 }
