@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from 'reactstrap';
 import { HorizontalPanel } from '../base/horizontalPanel';
 
 const SearchTypes = {
@@ -107,12 +108,12 @@ export default class Search extends React.Component {
     )
 
     const searchBtn = (
-      <button
+      <Button
         id="searchBtn"
         className="search-btn"
         onClick={() => this.search()}>
         SEARCH
-      </button>
+      </Button>
     )
 
     return (
