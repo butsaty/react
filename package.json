@@ -17,12 +17,16 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",    
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.2.0",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "babel-loader": "^7.1.5",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -33,10 +37,12 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.2.0",
-    "css-loader": "^1.0.1",
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.7.1",
-    "enzyme-to-json": "^3.3.5",
+    "css-loader": "^1.0.1",    
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
     "http-server": "^0.11.1",
@@ -64,7 +70,8 @@
     "build": "node_modules/.bin/cross-env NODE_ENV=production node_modules/.bin/webpack --config ./webpack",
     "test": "node_modules/.bin/jest",
     "coverage": "node_modules/.bin/jest  --updateSnapshot --coverage --coverageDirectory=dist/test-coverage",
-    "e2e": "node_modules/.bin/protractor e2e/protractor.conf.js"
+    "e2e": "node_modules/.bin/protractor e2e/protractor.conf.js",
+    "lint": "node_modules/.bin/eslint ./ --cache --ignore-pattern .gitignore --fix"
   },
   "jest": {
     "roots": [
