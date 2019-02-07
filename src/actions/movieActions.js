@@ -1,10 +1,12 @@
+// @flow
+
 import {
   FETCH_MOVIES_BEGIN,
   FETCH_MOVIES_FAILURE,
   FETCH_MOVIES_SUCCESS,
 } from './actionTypes';
 
-export function fetchMovies(searchBy, value, order) {
+export function fetchMovies(searchBy: string, value: string, order: string) {
   return (dispatch) => {
     dispatch(fetchBegin());
     return fetch(`http://react-cdp-api.herokuapp.com/movies?search=${value}&searchBy=${searchBy}&sortBy=${order}&sortOrder=asc`)
