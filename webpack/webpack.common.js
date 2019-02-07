@@ -1,8 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
+const AsyncChunkNames = require('webpack-async-chunk-names-plugin');
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 
 module.exports = {
-    entry: './src/index.js',
+    mode: "development",
     module: {
         rules: [
             {
@@ -10,21 +12,15 @@ module.exports = {
                 exclude: /node_modules/,
                 use: ['babel-loader']
             },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
-            },
         ]
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx', '.css'],
-        modules: [
-          'node_modules'
-        ]        
+        extensions: ['*', '.js', '.jsx'],
     },
     output: {
         path: path.resolve(__dirname, "../dist"),
         publicPath: '/',
+        chunkFilename: '[name].js',
         filename: 'bundle.js'
     },
     plugins: [
@@ -33,5 +29,26 @@ module.exports = {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
             },
         }),
+        new AsyncChunkNames(),
+        new FriendlyErrorsWebpackPlugin()
     ],
+    // optimization: {
+    //     splitChunks: {
+    //         cacheGroups: {
+    //             default: false,
+    //             vendors: false,
+    //             // vendor chunk
+    //             vendor: {
+    //                 // name of the chunk
+    //                 name: 'vendor',
+    //                 // async + async chunks
+    //                 chunks: 'all',
+    //                 // import file path containing node_modules
+    //                 test: /node_modules/,
+    //                 // priority
+    //                 priority: 20
+    //             },
+    //         }
+    //     }
+    // }
 };

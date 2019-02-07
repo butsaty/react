@@ -1,14 +1,8 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Route,
-    browserHistory,
-    Switch
-} from 'react-router-dom';
-
 import MainPage from './mainPage';
 import MovieDetailsPage from './movieDetailsPage';
 import NotFoundPage from './notFoundPage';
+import { Route, Switch } from 'react-router-dom';
 
 class RoutePage extends React.Component {
     constructor(props) {
@@ -16,17 +10,14 @@ class RoutePage extends React.Component {
     }
 
     render() {
-        const mainPage = () => (
-            <MainPage />
-        );
-
+        const {Router, location, context } = this.props;
         return (
-            <Router history={browserHistory}>
+            <Router location={location} context={context}>
                 <Switch>
-                    <Route exact path="/" render={mainPage} />
-                    <Route path="/movies/:id" component={MovieDetailsPage} />
-                    <Route path="/movies" render={mainPage} />
-                    <Route component={NotFoundPage} />
+                    <Route exact path="/" component={(props) => <MainPage {...props}/>} />
+                    <Route path="/movies/:id" component={(props) => <MovieDetailsPage {...props}/>} />
+                    <Route path="/movies" component={(props) => <MainPage {...props}/>} />
+                    <Route component={(props) => <NotFoundPage {...props}/>} />
                 </Switch>
             </Router>
         )

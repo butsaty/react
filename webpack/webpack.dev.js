@@ -9,7 +9,7 @@ module.exports = merge(common, {
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
-    index: 'index.html',
+    // index: 'index.html',
     contentBase: './dist',
     hot: true,
     open: true,
