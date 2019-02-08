@@ -1,5 +1,6 @@
 import jss from "jss";
 import injectSheet from "react-jss";
+import React from "react";
 
 const styles = {
   p: {

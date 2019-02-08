@@ -1,8 +1,9 @@
 import React from "react";
+import jss from "jss";
 import { Button } from "reactstrap";
 import { HorizontalPanel } from "../base/horizontalPanel";
 import Paragraph from "./searchClass";
-const { classes } = jss.createStyleSheet(styles).attach();
+const { classes } = jss.createStyleSheet({}).attach();
 
 const SearchTypes = {
   title: 'title',
