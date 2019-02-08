@@ -3,23 +3,23 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   items: [],
   loading: false,
-  error: null
+  error: null,
 };
 
 export default function movieReducer(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case actionTypes.FETCH_MOVIES_BEGIN:
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       };
 
     case actionTypes.FETCH_MOVIES_SUCCESS:
       return {
         ...state,
         loading: false,
-        items: action.payload.items
+        items: action.payload.items,
       };
 
     case actionTypes.FETCH_MOVIES_FAILURE:
@@ -27,7 +27,7 @@ export default function movieReducer(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        items: []
+        items: [],
       };
 
     default:

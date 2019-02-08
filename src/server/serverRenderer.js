@@ -1,9 +1,9 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter} from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom';
 import App from '../components/app';
 import createStore from '../store';
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
 
 function renderHTML(html, preloadedState) {
   return `
@@ -33,9 +33,9 @@ export default function serverRenderer() {
     const context = {};
 
     const app = (
-        <Provider store={store}>
-          <App Router={StaticRouter} location={req.url} context={context}/>
-        </Provider>
+      <Provider store={store}>
+        <App Router={StaticRouter} location={req.url} context={context} />
+      </Provider>
     );
 
     const htmlString = renderToString(app);

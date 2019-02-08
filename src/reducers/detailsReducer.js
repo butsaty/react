@@ -1,13 +1,13 @@
 import {
   FETCH_DETAILS_FAILURE,
   FETCH_DETAILS_SUCCESS,
-  FETCH_DETAILS_BEGIN
+  FETCH_DETAILS_BEGIN,
 } from '../actions/actionTypes';
 
 const initialState = {
   details: [],
   loading: false,
-  error: null
+  error: null,
 };
 
 export default function detailsReducer(state = initialState, action) {
@@ -16,14 +16,14 @@ export default function detailsReducer(state = initialState, action) {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       };
 
     case FETCH_DETAILS_SUCCESS:
       return {
         ...state,
         loading: false,
-        details: action.payload.details
+        details: action.payload.details,
       };
 
     case FETCH_DETAILS_FAILURE:
@@ -31,7 +31,7 @@ export default function detailsReducer(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload.error,
-        details: []
+        details: [],
       };
 
     default:

@@ -9,7 +9,7 @@ module.exports = [clientConfig, serverConfig];
 //     serverConfig
 //   ];
 // else
-  // module.exports = [
-  //   require('./webpack.dev.js'),
-  //   serverConfig
-  // ];
+// module.exports = [
+//   require('./webpack.dev.js'),
+//   serverConfig
+// ];

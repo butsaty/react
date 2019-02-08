@@ -4,5 +4,5 @@ import detailsReducer from './detailsReducer';
 
 export default combineReducers({
   movies: movieReducer,
-  details: detailsReducer
+  details: detailsReducer,
 });

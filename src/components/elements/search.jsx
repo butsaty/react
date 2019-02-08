@@ -1,5 +1,9 @@
 import React from "react";
-import { HorizontalPanel } from '../base/horizontalPanel';
+import jss from "jss";
+import { Button } from "reactstrap";
+import { HorizontalPanel } from "../base/horizontalPanel";
+import Paragraph from "./searchClass";
+const { classes } = jss.createStyleSheet({}).attach();
 
 const SearchTypes = {
   title: 'title',
@@ -71,7 +75,7 @@ export default class Search extends React.Component {
   render() {
     const searchBy = (
       <HorizontalPanel>
-        <p className="text-color">SEARCH BY</p>
+        <Paragraph className="text-color">SEARCH BY</Paragraph>
         <button
           id="titleBtn"
           className={"button-sm " + this.searchClass(SearchTypes.title)}
@@ -107,12 +111,12 @@ export default class Search extends React.Component {
     )
 
     const searchBtn = (
-      <button
+      <Button
         id="searchBtn"
         className="search-btn"
         onClick={() => this.search()}>
         SEARCH
-      </button>
+      </Button>
     )
 
     return (
